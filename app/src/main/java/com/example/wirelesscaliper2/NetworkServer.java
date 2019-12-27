@@ -1,18 +1,25 @@
 package com.example.wirelesscaliper2;
 
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
 
 public class NetworkServer implements Runnable {
-   byte[] bytes = new byte[8];
-   String string;
+
+
     @Override
     public void run() {
         while (true){
 
             try {
+                byte[] bytes = new byte[8];
+                String string = "";
+
                 DatagramSocket datagramSocket = new DatagramSocket(3333);
 
             DatagramPacket datagramPacket = new DatagramPacket(bytes,bytes.length);
@@ -26,7 +33,20 @@ public class NetworkServer implements Runnable {
 
                 }
                 System.out.println(string);
-                string = "";
+                Handler handler = MainActivity.handler;
+                Bundle bundle = new Bundle();
+                bundle.putString("key",string);
+                Message message = new Message();
+                message.setData(bundle);
+                handler.sendMessage(message);
+
+
+
+
+
+
+
+
 
 
 
