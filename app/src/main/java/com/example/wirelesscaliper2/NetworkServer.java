@@ -7,6 +7,7 @@ import java.net.SocketException;
 
 public class NetworkServer implements Runnable {
    byte[] bytes = new byte[30];
+   String string;
     @Override
     public void run() {
         while (true){
@@ -16,13 +17,11 @@ public class NetworkServer implements Runnable {
 
             DatagramPacket datagramPacket = new DatagramPacket(bytes,bytes.length);
            datagramSocket.receive(datagramPacket);
+            datagramSocket.close();
+                for (int i = 0; i < bytes.length -1; i++) {
+                    System.out.println(bytes[i]);
 
-
-
-            for (int i = 0; i < bytes.length; i++) {
-                System.out.println(bytes[i]);
-
-            }
+                }
 
 
 
