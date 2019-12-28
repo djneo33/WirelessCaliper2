@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
+import java.nio.ByteBuffer;
 
 public class NetworkServer implements Runnable {
 
@@ -28,7 +29,7 @@ public class NetworkServer implements Runnable {
             datagramSocket.close();
                 for (int i = 0; i < bytes.length; i++) {
                    if (bytes[i] != 0){
-                       string = string+ (char) bytes[i];
+                     string = String.valueOf(ByteBuffer.wrap(bytes).getInt());
                    }
 
                 }
