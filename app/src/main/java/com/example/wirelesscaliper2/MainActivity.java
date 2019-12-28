@@ -23,8 +23,8 @@ public  static Handler handler;
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
 
-                Bundle bundle = new Bundle();
-                bundle = msg.getData();
+                Bundle bundle = msg.getData();
+
                 textView.setText(bundle.getString("key"));
 
             }
