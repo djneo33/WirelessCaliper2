@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -18,7 +19,7 @@ public class NetworkServer implements Runnable {
         while (true){
 
             try {
-                byte[] bytes = new byte[8];
+                byte[] bytes = new byte[120];
                 String string = "";
 
                 DatagramSocket datagramSocket = new DatagramSocket(3333);
@@ -27,12 +28,13 @@ public class NetworkServer implements Runnable {
 
            datagramSocket.receive(datagramPacket);
             datagramSocket.close();
-                for (int i = 0; i < bytes.length; i++) {
-                   if (bytes[i] != 0){
-                     string = String.valueOf(ByteBuffer.wrap(bytes).getInt());
-                   }
 
-                }
+                    string = new String(bytes);
+
+
+
+
+
                 System.out.println(string);
                 Handler handler = MainActivity.handler;
                 Bundle bundle = new Bundle();
