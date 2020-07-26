@@ -1,9 +1,7 @@
 package com.example.wirelesscaliper2;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
 public class ProgressbarThread implements Runnable {
     @Override
     public void run() {
@@ -14,15 +12,14 @@ public class ProgressbarThread implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        while (true){
+        while (true) {
             x++;
-            if (x >= 100){
+            if (x >= 100) {
                 x = 0;
             }
             Bundle bundle = new Bundle();
             Message message = new Message();
-            bundle.putString("key4",String.valueOf(x));
+            bundle.putString("key4", String.valueOf(x));
             message.setData(bundle);
             handler.sendMessage(message);
             try {
@@ -30,9 +27,6 @@ public class ProgressbarThread implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-
         }
-
     }
 }
