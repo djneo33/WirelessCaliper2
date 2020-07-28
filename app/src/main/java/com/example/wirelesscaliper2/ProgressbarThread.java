@@ -5,7 +5,7 @@ import android.os.Message;
 public class ProgressbarThread implements Runnable {
     @Override
     public void run() {
-        Handler handler = MainActivity.handler;
+
         int x = 0;
         try {
             Thread.sleep(3000);
@@ -13,6 +13,7 @@ public class ProgressbarThread implements Runnable {
             e.printStackTrace();
         }
         while (true) {
+            Handler handler = MainActivity.handler;
             x++;
             if (x >= 100) {
                 x = 0;
