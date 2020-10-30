@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         aSwitch = findViewById(R.id.switch1);
         textView3 = findViewById(R.id.textView4);
         progressBar = findViewById(R.id.progressBar);
+
     }
     @SuppressLint("HandlerLeak")
     @Override
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 String key2 = bundle.getString("key2");
                 String key3 = bundle.getString("key3");
                 String key4 = bundle.getString("key4");
-                if (key != null) {
+                if (key != null && textView != null) {
                     System.out.println(key);
                     textView.setText(key);
                 }
